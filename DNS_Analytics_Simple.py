@@ -56,7 +56,7 @@ dbutils.fs.cp('file:///tmp/dns-notebook-datasets/model', f'{dbfs_dir}/model/', T
 
 # COMMAND ----------
 
-from pyspark.sql.functions import *
+from pyspark.sql.functions import col, concat_ws
 
 pdns_schema = '''
   rrname     string,
@@ -734,3 +734,7 @@ mlflow.pyfunc.save_model(f'/dbfs{dbfs_dir}/models/my_ioc_detection_model', pytho
 
 # 実際に判定してみる
 my_model.predict(mlflow.pyfunc.PythonModel, '9aaaa0cmsdkaea')
+
+# COMMAND ----------
+
+
